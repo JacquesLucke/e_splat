@@ -1,0 +1,17 @@
+#pages {
+    margin: auto;
+    max-width: 800px;
+}
+
+#welcome {
+    
+}
+
+.center_wrapper {
+    text-align: center;
+}
+
+.mybutton {
+    width: 120px;
+    height: 30px;
+}
