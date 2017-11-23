@@ -4,49 +4,59 @@
         <meta charset="utf-8" />
         <title>E-Splat</title>
         <link rel="stylesheet" type="text/css" href="styles/main.css" />
-        <script src="js/main.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="resources/questions_before.js"></script>
+        <script src="js/main.js"></script>
     </head>
     <body onload="setup()">
-        <div id="pages">
-            <div id="page_welcome">
+        <main>
+            <div id="welcome_page_1">
                 <img src="./images/welcome.png" width=100% />
 
                 <div class="center_wrapper">
-                    <button class="mybutton" onclick="showPage('how_to_play_1')">Start</button>
+                    <button class="mybutton" onclick="showState('welcome_2')">Start</button>
                 </div>
             </div>
-            <div id="page_how_to_play_1">
+            <div id="welcome_page_2">
                 <img src="./images/how_to_play_1.png" width=100% />
 
-                <button class="mybutton" onclick="showPage('welcome')">Back to start</button>
-                <button class="mybutton" onclick="showPage('how_to_play_2')">Next</button>
+                <button class="mybutton" onclick="showState('welcome_1')">Back to start</button>
+                <button class="mybutton" onclick="showState('welcome_3')">Next</button>
             </div>
-            <div id="page_how_to_play_2">
+            <div id="welcome_page_3">
                 <img src="./images/how_to_play_2.png" width=100% />
 
-                <button class="mybutton" onclick="showPage('how_to_play_1')">Back</button>
-                <button class="mybutton" onclick="showPage('create_profile')">Next</button>
+                <button class="mybutton" onclick="showState('welcome_2')">Back</button>
+                <button class="mybutton" onclick="showState('question_before_feel_happy')">Next</button>
             </div>
-            <div id="page_create_profile">
-                <img src="./images/create_profile_header.png" width=100% />
 
+            <div id="create_profile_page">
+                <img src="./images/create_profile_header.png" width=100% />
+                <h3 id="profile_section_header">Section</h3>
                 <form>
-                    <input type="file" onchange="loadImage(this)" /><br />
-                    Your Occupation <input type="text" /><br />
-                    Your Hobbies <input type="text" /><br />
-                    Three words that describe you
-                    <ol>
-                        <li><input type="text" />
-                        <li><input type="text" />
-                        <li><input type="text" />
-                    </ol>
+                    <span id="profile_form_image">
+                        <input type="file" onchange="loadImage(this)" /><br />
+                        <img id="profile_picture" src="#" width=200px/>
+                    </span>
+                    <span id="profile_form_occupation">
+                        Your Occupation
+                        <input type="text" /><br />
+                    </span>
+                    <span id="profile_form_hobbies">
+                        Your Hobbies
+                        <input type="text" /><br />
+                    </span>
+                    <span id="profile_form_description">
+                        Three words that describe you
+                        <textarea rows="3" cols="50"></textarea>
+                    </span>
                 </form>
 
-                <img id="profile_picture" src="#" width=200px/>
-                <button class="mybutton" onclick="showPage('how_to_play_2')">Back</button>
-                <button class="mybutton" onclick="showPage('connect');startTimer();">Next</button>
+                <button class="mybutton" id="profile_back">Back</button>
+                <button class="mybutton" id="profile_next">Next</button>
+                <!--<button class="mybutton"  onclick="showPage('connect');startTimer();">Next</button>-->
             </div>
+            <!--
             <div id="page_connect">
                 <img src="./images/loading.gif" width=200px/>
                 <button class="mybutton" onclick="showPage('create_profile');stopTimer();">Back</button>
@@ -54,18 +64,20 @@
             <div id="page_ready">
                 Ready
             </div>
-            <div id="page_choose_players">
-
+            --->
+            <div id="question_overlay" style="display:none">
+                <div id="start_questions_header">
+                    <h2>Before you start, we want to know how you're feeling!</h2>
+                    <p>Right now you feel:</p>
+                    <p id="question_container"></p>
+                </div>
+                <div>
+                    Not at all
+                    <input id="question_overlay_slider" type="range" min="1" max="100" value="50" class="slider" />
+                    Very much
+                </div>
+                <button class="mybutton" id="next_question_button" onclick="showState('profile_1')">Next</button>
             </div>
-            <div id="page_players_cosen">
-
-            </div>
-            <div id="page_not_picked">
-
-            </div>
-            <div id="page_questions">
-
-            </div>
-        </div>
+        </main>
     </body>
 </html>
