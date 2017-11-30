@@ -10,6 +10,14 @@
     </head>
     <body onload="setup()">
         <main>
+            <div id="informed_consent_page">
+                <h1>informed consent page</h1>
+                <p id="informed_consent_warning" style="color:red;display:none;">Please agree if you want to continue</p>
+                <input type="checkbox" id="informed_consent_checkbox" />
+                <label for="informed_consent_checkbox">I agree</label>
+                <br/>
+                <button id="informed_consent_continue">Continue</button>
+            </div>
             <div id="welcome_page_1">
                 <img src="./images/welcome.png" width=100% />
 
@@ -54,17 +62,27 @@
 
                 <button class="mybutton" id="profile_back">Back</button>
                 <button class="mybutton" id="profile_next">Next</button>
-                <!--<button class="mybutton"  onclick="showPage('connect');startTimer();">Next</button>-->
             </div>
-            <!--
             <div id="page_connect">
-                <img src="./images/loading.gif" width=200px/>
-                <button class="mybutton" onclick="showPage('create_profile');stopTimer();">Back</button>
+                <h1>Please wait while we connect you with other players over the server...</h1>
+                <img src="./images/loading.gif" width=200px />
+                <p>Other players connected: <span id="connect_amount"></span></p>
             </div>
-            <div id="page_ready">
-                Ready
+            <div id="select_players_page">
+                <h1>Select Players</h1>
+                <table id="player_selection_table">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
-            --->
             <div id="question_overlay" style="display:none">
                 <div id="start_questions_header">
                     <h2>Before you start, we want to know how you're feeling!</h2>
