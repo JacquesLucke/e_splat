@@ -5,7 +5,7 @@
     4: Quite a bit
     5: Extremely
 */
-panasScale = [
+src_panasScale = [
     "Interested",
     "Disinterested",
     "Excited",

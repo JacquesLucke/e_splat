@@ -6,17 +6,46 @@
         <link rel="stylesheet" type="text/css" href="styles/main.css" />
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="resources/questions_before.js"></script>
+        <script src="resources/control_1.js"></script>
+        <script src="resources/control_2.js"></script>
+        <script src="resources/smd.js"></script>
+        <script src="resources/loneliness.js"></script>
+        <script src="resources/panas.js"></script>
+        <script src="resources/profiles/profiles.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body onload="setup()">
         <main>
             <div id="informed_consent_page">
-                <h1>informed consent page</h1>
-                <p id="informed_consent_warning" style="color:red;display:none;">Please agree if you want to continue</p>
-                <input type="checkbox" id="informed_consent_checkbox" />
-                <label for="informed_consent_checkbox">I agree</label>
+                <div class="header">Informed consent!</div>
+                <span id="informed_consent_text"></span>
+                <fieldset style="border:none">
+                    <table style="width:500px">
+                        <tr>
+                            <td><input type="checkbox" class="informed_consent_check" /></td>
+                            <td>I have read and understand the above information about what is required for this study.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="informed_consent_check" /></td>
+                            <td>I understand that I am free to withdraw at any time from this study without penalty if I wish.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="informed_consent_check" /></td>
+                            <td>I consent to the processing of my personal information for the purpose of this study only and that it will not be used for other purpose.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="informed_consent_check" /></td>
+                            <td>I understand that my information will be treated as confidential and in accordance with the Data Protection Act 1998.</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" class="informed_consent_check" /></td>
+                            <td>I confirm that I am over 18 and do not suffer from severe mental health problem (including schizophrenia, schizoaffective disorder, or psychosis).</td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <p id="informed_consent_warning" style="color:red;display:none;">Please tick all boxes if you want to continue.</p>
                 <br/>
-                <button id="informed_consent_continue">Continue</button>
+                <button class="mybutton" id="informed_consent_continue">Continue</button>
             </div>
             <div id="welcome_page_1">
                 <img src="./images/welcome.png" width=100% />
@@ -35,66 +64,117 @@
                 <img src="./images/how_to_play_2.png" width=100% />
 
                 <button class="mybutton" onclick="showState('welcome_2')">Back</button>
-                <button class="mybutton" onclick="showState('question_before_feel_happy')">Next</button>
+                <button class="mybutton" onclick="showState('before_start')">Next</button>
+            </div>
+            <div id="before_start_page">
+                <img src="./images/before_start.png" width=100% />
+
+                <button class="mybutton" onclick="showState('welcome_3')">Back</button>
+                <button class="mybutton" onclick="showState('questions_beginning')">Next</button>
             </div>
 
             <div id="create_profile_page">
                 <img src="./images/create_profile_header.png" width=100% />
                 <h3 id="profile_section_header">Section</h3>
-                <form>
-                    <span id="profile_form_image">
-                        <input type="file" onchange="loadImage(this)" /><br />
-                        <img id="profile_picture" src="#" width=200px/>
-                    </span>
-                    <span id="profile_form_occupation">
-                        Your Occupation
-                        <input type="text" /><br />
-                    </span>
-                    <span id="profile_form_hobbies">
-                        Your Hobbies
-                        <input type="text" /><br />
-                    </span>
-                    <span id="profile_form_description">
-                        Three words that describe you
-                        <textarea rows="3" cols="50"></textarea>
-                    </span>
-                </form>
+                <div>
+                    <form id="create_profile_form">
+                        <span id="profile_form_image">
+                            <input id="file_input" type="file" onchange="loadProfilePicture(this)" />
+                            <label for="file_input" id="file_input_label">Upload a profile picture</label><br />
+                        </span>
+                        <span id="profile_form_occupation">
+                            Your Occupation
+                            <input type="text" /><br />
+                        </span>
+                        <span id="profile_form_hobbies">
+                            Your Hobbies
+                            <input type="text" /><br />
+                        </span>
+                        <span id="profile_form_three_words">
+                            Three words that describe you
+                            <input type="text" /><br />
+                        </span>
+                        <span id="profile_form_description">
+                            Description
+                            <textarea rows="3" cols="50"></textarea>
+                        </span>
+                    </form>
+                    <div id="profile_picture_container">
+                        <img id="profile_picture" src="images/empty_profile_picture.png" width=200px/>
+                    </div>
+                    <div class="clear_float"></div>
+                </div>
+
 
                 <button class="mybutton" id="profile_back">Back</button>
                 <button class="mybutton" id="profile_next">Next</button>
             </div>
             <div id="page_connect">
-                <h1>Please wait while we connect you with other players over the server...</h1>
-                <img src="./images/loading.gif" width=200px />
-                <p>Other players connected: <span id="connect_amount"></span></p>
+                <img src="./images/connect.png" width=100% />
+                <div class="center_wrapper">
+                    <img src="./images/loading.gif" width=200px />
+                    <p id="connect_amount"></p>
+                </div>
+
             </div>
             <div id="select_players_page">
                 <h1>Select Players</h1>
-                <table id="player_selection_table">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+                <p>Move the cursor over an image to see more details about the person. Click to select the person.</p>
+                <h3 id="select_players_amount">0/X players selected</h3>
+                <div id="player_selection_bar">
+                </div>
+                <div id="selected_player_properties">
+                    <table>
+                        <tr>
+                            <th>Occupation</th>
+                            <td id="selected_player_occupation"></td>
+                        </tr>
+                        <tr>
+                            <th>Hobbies</th>
+                            <td id="selected_player_hobbies"></td>
+                        </tr>
+                        <tr>
+                            <th>Three words</th>
+                            <td id="selected_player_three_words"></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td id="selected_player_description"></td>
+                        </tr>
+                    </table>
+                </div>
+                <p id="select_players_command"></p>
+                <div class="center_wrapper">
+                    <button class="mybutton" id="select_players_start">Start</button>
+                </div>
             </div>
-            <div id="question_overlay" style="display:none">
-                <div id="start_questions_header">
-                    <h2>Before you start, we want to know how you're feeling!</h2>
-                    <p>Right now you feel:</p>
-                    <p id="question_container"></p>
+            <div id="calculate_players_page">
+                <img src="./images/calculating_players.png" width=100% />
+                <div class="center_wrapper"><img src="./images/loading.gif" width=200px /></div>
+            </div>
+            <div id="not_chosen_page">
+                <img src="./images/sorry_not_picked.png" width=100% />
+                <div class="center_wrapper">
+                    <button class="mybutton" id="not_chosen_next">Continue</button>
                 </div>
-                <div>
-                    Not at all
-                    <input id="question_overlay_slider" type="range" min="1" max="100" value="50" class="slider" />
-                    Very much
+            </div>
+            <div id="cannot_continue_page">
+                <img src="./images/cannot_carry_on.png" width=100% />
+                <div class="center_wrapper">
+                    <button class="mybutton" id="cannot_continue_next">Continue</button>
                 </div>
-                <button class="mybutton" id="next_question_button" onclick="showState('profile_1')">Next</button>
+            </div>
+            <div id="debrief_page">
+                <div class="header">Debrief</div>
+                <span id="debrief_text"></span>
+            </div>
+            <div id="questions_page">
+                <p id="question_counter"></p>
+                <p id="questions_question"></p>
+                <fieldset id="questions_answers">
+                </fieldset>
+                <button class="mybutton" id="questions_back">Back</button>
+                <button class="mybutton" id="questions_next">Next</button>
             </div>
         </main>
     </body>

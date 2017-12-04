@@ -3,7 +3,7 @@ Yes or no?
 
 Over the last year have you...
 */
-smdScale = [
+src_smdScale = [
     "often found it difficult not to look at messages on social media when you were doing something else (e.g. school work)?",
     "regularly found that you can't think of anything else but the moment that you will be able to use social media again?",
     "often sat waiting until something happens on social media again?",

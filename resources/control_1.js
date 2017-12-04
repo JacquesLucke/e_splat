@@ -1,27 +1,95 @@
-controlQuestions1 = [
-    ["During the last year, I have been a member of...",
-        ["Facebook", "Twitter", "Snapchat", "Instagram", "Linkedin", "Whatsapp", "Tumblr", "Youtube"]],
-    ["What I look for in a good Social Media platform is...",
-        ["Connection to others",
-         "Sharing photographs",
-         "Sharing my opinion on issues",
-         "Liking and disliking posts",
-         "Playing games online"]],
-    ["My current number of friends on Facebook is... (If you don't have Facebook, please substitute twitter)",
-        ["0-49", "50-99", "100-149", "150-199", "200-249", "250+"]],
-    ["My favourite part about social media is...":
-        ["Following Celebrities", "Playing games", "Sharing information", "Sharing photos", "Commenting on photos", "Reading newsfeeds", "Viral videos/memes"]],
-    ["Over the last year I have enjoyed using social media?",
-        ["Yes", "No"]],
-    ["Some of the benefits of social media I personally encounter are...",
-        ["Connecting to people",
-         "Storing photos",
-         "Biographical life account",
-         "Voicing a political opinion",
-         "Instant messenger",
-         "Playing games with others"]],
-    ["How many members of your family are connected through Facebook (or another form of Social media platform)",
-        ["1-3", "4-6", "7-9", "10-12", "13+"]],
-    ["How many nationalities are you currently connected with though Facebook (or another social media platform)",
-        ["1-2", "3-4", "5-6". "7-8", "9-10", "11+"]]
+src_controlQuestions1 = [
+  {
+    "answers": [
+      "Facebook",
+      "Twitter",
+      "Snapchat",
+      "Instagram",
+      "Linkedin",
+      "Whatsapp",
+      "Tumblr",
+      "Youtube"
+    ],
+    "multiple": true,
+    "question": "During the last year, I have been a member of..."
+  },
+  {
+    "answers": [
+      "Connection to others",
+      "Sharing photographs",
+      "Sharing my opinion on issues",
+      "Liking and disliking posts",
+      "Playing games online"
+    ],
+    "multiple": true,
+    "question": "What I look for in a good Social Media platform is..."
+  },
+  {
+    "answers": [
+      "0-49",
+      "50-99",
+      "100-149",
+      "150-199",
+      "200-249",
+      "250+"
+    ],
+    "multiple": false,
+    "question": "My current number of friends on Facebook is... (If you don't have Facebook, please substitute twitter)"
+  },
+  {
+    "answers": [
+      "Following Celebrities",
+      "Playing games",
+      "Sharing information",
+      "Sharing photos",
+      "Commenting on photos",
+      "Reading newsfeeds",
+      "Viral videos/memes"
+    ],
+    "multiple": false,
+    "question": "My favourite part about social media is..."
+  },
+  {
+    "answers": [
+      "Yes",
+      "No"
+    ],
+    "multiple": false,
+    "question": "Over the last year I have enjoyed using social media?"
+  },
+  {
+    "answers": [
+      "Connecting to people",
+      "Storing photos",
+      "Biographical life account",
+      "Voicing a political opinion",
+      "Instant messenger",
+      "Playing games with others"
+    ],
+    "multiple": true,
+    "question": "Some of the benefits of social media I personally encounter are..."
+  },
+  {
+    "answers": [
+      "1-3",
+      "4-6",
+      "7-9",
+      "10-12",
+      "13+"
+    ],
+    "multiple": false,
+    "question": "How many members of your family are connected through Facebook (or another form of Social media platform)"
+  },
+  {
+    "answers": [
+      "1-2",
+      "3-4",
+      "5-6",
+      "7-8",
+      "9-10",
+      "11+"
+    ],
+    "multiple": false,
+    "question": "How many nationalities are you currently connected with though Facebook (or another social media platform)"
+  }
 ]

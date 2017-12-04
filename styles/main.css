@@ -1,3 +1,7 @@
+* {
+    font-family: sans-serif;
+}
+
 main {
     margin: auto;
     max-width: 800px;
@@ -8,8 +12,14 @@ main {
 }
 
 .mybutton {
-    width: 120px;
+    min-width: 120px;
     height: 30px;
+    margin: 10px;
+    background: linear-gradient(#dcf9ff, #a0eaff);
+    border-radius: 5px;
+    border: 1px solid #0992b9;
+    box-shadow: 1px 2px 2px black;
+    font-size: 13pt;
 }
 
 #question_overlay {
@@ -34,4 +44,157 @@ main {
     width: 200px;
     height: 200px;
     border-radius: 10px;
+}
+
+input[type=text] {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 200px;
+}
+
+#create_profile_page table {
+    width: 400px;
+}
+
+#profile_picture_container {
+    width: 200px;
+    height: 200px;
+    background-color: #108296;
+    border-radius: 5px;
+}
+
+#profile_picture_container > img {
+    display: block;
+    position: absolute;
+    border-radius:15px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+}
+
+
+#player_selection_bar {
+    display: inline-block;
+    margin: 10px;
+}
+
+#player_selection_bar > div {
+    margin: 10px;
+    float: left;
+}
+
+.notSelectedBox {
+    border: 4px solid transparent;
+}
+
+.selectedBox {
+    border: 4px solid #013357;
+}
+
+#questions_answers {
+    border: none;
+    min-height: 210px;
+}
+
+#questions_answers > div {
+}
+
+#questions_answers > div > input {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+#questions_answers > div > label {
+    display: inline-block;
+    width: 200px;
+    vertical-align: middle;
+}
+
+#questions_question {
+    font-size: 140%;
+    display: block;
+    min-height: 35px;
+    width: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    height: 220px;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: top center;
+    font-size: 3em;
+    line-height: 190px;
+    text-align: center;
+}
+
+#informed_consent_page, #debrief_page {
+    width: 600px;
+}
+
+#informed_consent_text, #debrief_text {
+    text-align: left;
+}
+
+#connect_amount {
+    font-size: 2em;
+    color: #0070c0;
+}
+
+#question_counter {
+    font-size: 90%;
+    text-align: center;
+}
+
+#create_profile_form {
+    float: left;
+    width: 500px;
+    min-height: 250px;
+}
+
+#profile_picture_container {
+    float: right;
+}
+
+.clear_float {
+    clear: both;
+}
+
+#file_input {
+    display: none;
+}
+
+#file_input_label {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #c0cacf;
+    border-radius: 3px;
+    padding: 9px;
+    background: #dcf9ff;
+}
+
+#file_input_label:hover {
+    color: #013357;
+    background: #a0eaff;
+}
+
+#create_profile_form > span {
+    margin: 10px;
+}
+
+th {
+    width: 100px;
+    text-align: left;
+    padding: 10px;
+}
+
+#selected_player_properties {
+    min-height: 200px;
 }

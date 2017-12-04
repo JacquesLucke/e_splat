@@ -4,7 +4,7 @@
     3: Sometimes
     4: Often
 */
-lonelinessScale = [
+src_lonelinessScale = [
     "I feel in tune with people around me",
     "I lack companionship",
     "There is no one I can turn to",
