@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 main {
@@ -20,20 +20,6 @@ main {
     border: 1px solid #0992b9;
     box-shadow: 1px 2px 2px black;
     font-size: 13pt;
-}
-
-#question_overlay {
-    background-color: #fff;
-    border: 1px solid #000;
-    text-align:center;
-    height: 300px;
-    width: 550px;
-    margin: 50px auto 0px auto;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 #player_selection_table {
@@ -128,11 +114,12 @@ input[type=text] {
     height: 220px;
     background-image: url(../images/background.png);
     background-repeat: no-repeat;
-    background-size: 60%;
+    background-size: auto 100%;
     background-position: top center;
     font-size: 3em;
     line-height: 190px;
     text-align: center;
+    font-weight: bold;
 }
 
 #informed_consent_page, #debrief_page {
@@ -197,4 +184,8 @@ th {
 
 #selected_player_properties {
     min-height: 200px;
+}
+
+#game_video {
+    width: 100%;
 }

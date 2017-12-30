@@ -10,7 +10,7 @@ src_profiles = [
         "occupation" : "PhD Student",
         "hobbies" : "Walking my dog and football",
         "threeWords" : ["Outgoing", "Vegan", "Spontaneous"],
-        "description" : "I’m a 27 year old PhD student, studying Geography at Exeter uni. I like being outside and walking my dog when I’m home. When I’m in Exeter I play football with friends. I support Portsmouth FC.",
+        "description" : "I'm a 27 year old PhD student, studying Geography at Exeter uni. I like being outside and walking my dog when I'm home. When I'm in Exeter I play football with friends. I support Portsmouth FC.",
         "image" : "pp_2.png"
     },
     {

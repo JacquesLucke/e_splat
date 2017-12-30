@@ -3,8 +3,21 @@ function setup() {
     loadDebrief();
     loadOtherProfiles();
     setupStates();
-    showState("questions_beginning");
+    startUnloadPrevention();
+    showState("informed_consent");
     console.log("finished");
+}
+
+function startUnloadPrevention() {
+    window.onbeforeunload = function(e) {
+        var text = "All unsaved data will be lost when you leave the page.";
+        e.returnValue = text;
+        return text;
+    }
+}
+
+function stopUnloadPrevention() {
+    window.onbeforeunload = undefined;
 }
 
 function loadInformedConsent() {
@@ -299,11 +312,11 @@ class SelectPlayerState extends State {
     updateSelectionAmount() {
         changeIdText("select_players_amount", this.selectionAmount + " of " + this.playersNeeded + " selected");
         if (this.selectionAmount < this.playersNeeded) {
-            changeIdText("select_players_command", "Please select more persons.");
+            changeIdText("select_players_command", "Please select more people.");
         } else if (this.selectionAmount == this.playersNeeded) {
             changeIdText("select_players_command", "Perfect, you can now start the game.");
         } else {
-            changeIdText("select_players_command", "You have selected to many persons. Please deselect someone.");
+            changeIdText("select_players_command", "You have selected to many people. Please deselect someone.");
         }
     }
 
@@ -346,6 +359,48 @@ class NotChosenState extends State {
     }
 }
 
+class NotChosenVideoState extends State {
+    constructor(nextState) {
+        super();
+        this.nextState = nextState;
+    }
+
+    show() {
+        showIdElements("not_chosen_video_page");
+        $("#not_chosen_next_video")[0].onclick = () => { showState(this.nextState); };
+    }
+
+    hide() {
+        hideIdElements("not_chosen_video_page");
+    }
+}
+
+class ShowVideoState extends State {
+    constructor(nextState) {
+        super();
+        this.nextState = nextState;
+        this.video = $("#game_video")[0];
+    }
+
+    show() {
+        showIdElements("game_video_page");
+        this.video.currentTime = 0;
+        this.video.play();
+
+        this.video.addEventListener("ended", e => { showState(this.nextState); }, false);
+        this.video.onclick = (e) => {
+            if (e.ctrlKey || e.altKey) {
+                showState(this.nextState);
+            }
+        }
+    }
+
+    hide() {
+        hideIdElements("game_video_page");
+        this.video.pause();
+    }
+}
+
 class CannotContinueState extends State {
     constructor(nextState) {
         super();
@@ -369,6 +424,7 @@ class DebriefState extends State {
 
     show() {
         showIdElements("debrief_page");
+        stopUnloadPrevention();
     }
 
     hide() {
@@ -537,27 +593,28 @@ class Question {
     }
 }
 
-controlQuestions1 = [];
+var controlQuestions1 = [];
 src_controlQuestions1.forEach((object) => {
     controlQuestions1.push(new Question(object.question, object.answers, object.multiple));
 });
 
-controlQuestions2 = [];
+var controlQuestions2 = [];
 src_controlQuestions2.forEach((object) => {
     controlQuestions2.push(new Question(object.question, object.answers, object.multiple));
 });
 
-smdScaleQuestions = [];
+var smdScaleQuestions = [];
 src_smdScale.forEach((question) => {
-    smdScaleQuestions.push(new Question(question, ["yes", "no"]));
+    var prefix = "During the last year you "
+    smdScaleQuestions.push(new Question(prefix + question, ["yes", "no"]));
 });
 
-lonelinessQuestions = [];
+var lonelinessQuestions = [];
 src_lonelinessScale.forEach((question) => {
     lonelinessQuestions.push(new Question(question, ["Never", "Rarely", "Sometimes", "Often"]));
 });
 
-panasQuestions = [];
+var panasQuestions = [];
 src_panasScale.forEach((question) => {
     panasQuestions.push(new Question("How much do you currently feel: " + question,
         ["Very slightly or not at all", "A little", "Moderately", "Quite a bit", "Extremely"]));
@@ -621,8 +678,8 @@ function setupStates() {
 
         player_selection_2: new SelectPlayerState(3, "calculate_players_2"),
         calculate_players_2: new CalculatePlayersState("not_chosen_2"),
-        not_chosen_2: new NotChosenState("questions_panas_2"),
-        questions_panas_2: new QuestionsState(getPanasQuestionsSet(2), "player_selection_3"),
+        not_chosen_2: new NotChosenVideoState("show_video_2"),
+        show_video_2: new ShowVideoState("player_selection_3"),
 
         player_selection_3: new SelectPlayerState(4, "calculate_players_3"),
         calculate_players_3: new CalculatePlayersState("not_chosen_3"),
@@ -653,12 +710,10 @@ function getQuestionResultsJson() {
 }
 
 function getAllQuestionResults() {
-    results = {};
-    for (var stateName in states) {
-        if (!states.hasOwnProperty(stateName)) continue;
-        var state = states[stateName];
-        if (!(state instanceof QuestionsState)) continue;
-
+    var results = {};
+    var questionStates = getAllQuestionStates();
+    for (var i = 0; i < questionStates.length; i++) {
+        var state = questionStates[i];
         var stateResults = state.getQuestionResults();
         for (var groupName in stateResults) {
             if (!stateResults.hasOwnProperty(groupName)) continue;
@@ -666,4 +721,23 @@ function getAllQuestionResults() {
         }
     }
     return results;
+}
+
+function userSkippedAtSomePoint() {
+    var questionStates = getAllQuestionStates();
+    for (var i = 0; i < questionStates.length; i++) {
+        if (questionStates[i].skipped) return true;
+    }
+    return false;
+}
+
+function getAllQuestionStates() {
+    var questionStates = [];
+    for (var stateName in states) {
+        if (!states.hasOwnProperty(stateName)) continue;
+        var state = states[stateName];
+        if (!(state instanceof QuestionsState)) continue;
+        questionStates.push(state);
+    }
+    return questionStates;
 }

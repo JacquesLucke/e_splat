@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>E-Splat</title>
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles/main.css" />
+
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="resources/questions_before.js"></script>
         <script src="resources/control_1.js"></script>
@@ -22,24 +24,24 @@
                 <fieldset style="border:none">
                     <table style="width:500px">
                         <tr>
-                            <td><input type="checkbox" class="informed_consent_check" /></td>
-                            <td>I have read and understand the above information about what is required for this study.</td>
+                            <td><input type="checkbox" class="informed_consent_check" id="constent_checkbox_1" autocomplete="off" /></td>
+                            <td><label for="constent_checkbox_1">I have read and understand the above information about what is required for this study.</label></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="informed_consent_check" /></td>
-                            <td>I understand that I am free to withdraw at any time from this study without penalty if I wish.</td>
+                            <td><input type="checkbox" class="informed_consent_check" id="constent_checkbox_2" autocomplete="off" /></td>
+                            <td><label for="constent_checkbox_2">I understand that I am free to withdraw at any time from this study without penalty if I wish.</label></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="informed_consent_check" /></td>
-                            <td>I consent to the processing of my personal information for the purpose of this study only and that it will not be used for other purpose.</td>
+                            <td><input type="checkbox" class="informed_consent_check" id="constent_checkbox_3" autocomplete="off" /></td>
+                            <td><label for="constent_checkbox_3">I consent to the processing of my personal information for the purpose of this study only and that it will not be used for other purpose.</label></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="informed_consent_check" /></td>
-                            <td>I understand that my information will be treated as confidential and in accordance with the Data Protection Act 1998.</td>
+                            <td><input type="checkbox" class="informed_consent_check" id="constent_checkbox_4" autocomplete="off" /></td>
+                            <td><label for="constent_checkbox_4">I understand that my information will be treated as confidential and in accordance with the Data Protection Act 1998.</label></td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="informed_consent_check" /></td>
-                            <td>I confirm that I am over 18 and do not suffer from severe mental health problem (including schizophrenia, schizoaffective disorder, or psychosis).</td>
+                            <td><input type="checkbox" class="informed_consent_check" id="constent_checkbox_5" autocomplete="off" /></td>
+                            <td><label for="constent_checkbox_5">I confirm that I am over 18 and do not suffer from severe mental health problem (including schizophrenia, schizoaffective disorder, or psychosis).</label></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -77,7 +79,7 @@
                 <img src="./images/create_profile_header.png" width=100% />
                 <h3 id="profile_section_header">Section</h3>
                 <div>
-                    <form id="create_profile_form">
+                    <form id="create_profile_form" autocomplete="off">
                         <span id="profile_form_image">
                             <input id="file_input" type="file" onchange="loadProfilePicture(this)" />
                             <label for="file_input" id="file_input_label">Upload a profile picture</label><br />
@@ -118,8 +120,8 @@
 
             </div>
             <div id="select_players_page">
-                <h1>Select Players</h1>
-                <p>Move the cursor over an image to see more details about the person. Click to select the person.</p>
+                <div class="header" style="margin-bottom:-80px">Choose your opponents!</div>
+                <p>Hover your cursor over each of the other participants in the game to see their profiles. Click to select the person.</p>
                 <h3 id="select_players_amount">0/X players selected</h3>
                 <div id="player_selection_bar">
                 </div>
@@ -152,10 +154,20 @@
                 <img src="./images/calculating_players.png" width=100% />
                 <div class="center_wrapper"><img src="./images/loading.gif" width=200px /></div>
             </div>
+            <div id="game_video_page">
+                <video id="game_video" src="resources/3_player_game.mp4">
+                </video>
+            </div>
             <div id="not_chosen_page">
                 <img src="./images/sorry_not_picked.png" width=100% />
                 <div class="center_wrapper">
                     <button class="mybutton" id="not_chosen_next">Continue</button>
+                </div>
+            </div>
+            <div id="not_chosen_video_page">
+                <img src="./images/sorry_not_picked_video.png" width=100% />
+                <div class="center_wrapper">
+                    <button class="mybutton" id="not_chosen_next_video">Continue</button>
                 </div>
             </div>
             <div id="cannot_continue_page">
