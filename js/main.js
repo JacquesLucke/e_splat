@@ -242,7 +242,7 @@ class SelectPlayerState extends State {
         super();
         this.playersNeeded = playersNeeded;
         this.selectionAmount = 0;
-        this.imageElements = Array.from($("#player_selection_bar img"));
+        this.imageElements = $("#player_selection_bar img").toArray();
         this.nextState = nextState;
     }
 
@@ -425,6 +425,7 @@ class DebriefState extends State {
     show() {
         showIdElements("debrief_page");
         stopUnloadPrevention();
+        sendResultsToServer();
     }
 
     hide() {
@@ -441,8 +442,10 @@ class QuestionsState extends State {
         this.nextState = nextState;
         this.skipped = false;
 
-        this.answers = Array(questionSet.length);
-        this.answers.fill(null);
+        this.answers = [];
+        for (var i = 0; i < questionSet.length; i++) {
+            this.answers.push(null);
+        }
     }
 
     show() {
@@ -701,7 +704,11 @@ function showState(name) {
 }
 
 function hideAllStates() {
-    Object.values(states).forEach( (state) => { state.hide(); } );
+    for (var key in states) {
+        if (Object.prototype.hasOwnProperty.call(states, key)) {
+            states[key].hide();
+        }
+    }
 }
 
 
@@ -740,4 +747,11 @@ function getAllQuestionStates() {
         questionStates.push(state);
     }
     return questionStates;
+}
+
+function sendResultsToServer() {
+    function onSuccess(data, status) {
+        console.log(data);
+    }
+    $.post("./store.php", getQuestionResultsJson(), onSuccess);
 }

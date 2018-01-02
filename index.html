@@ -14,10 +14,10 @@
         <script src="resources/loneliness.js"></script>
         <script src="resources/panas.js"></script>
         <script src="resources/profiles/profiles.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.min.js"></script>
     </head>
     <body onload="setup()">
-        <main>
+        <div id="main">
             <div id="informed_consent_page">
                 <div class="header">Informed consent!</div>
                 <span id="informed_consent_text"></span>
@@ -121,7 +121,7 @@
             </div>
             <div id="select_players_page">
                 <div class="header" style="margin-bottom:-80px">Choose your opponents!</div>
-                <p>Hover your cursor over each of the other participants in the game to see their profiles. Click to select the person.</p>
+                <p>Hover your cursor over each of the other participants in the game to see their profiles. Once you know who you want to play with, select the people to play with. The number required will appear below.</p>
                 <h3 id="select_players_amount">0/X players selected</h3>
                 <div id="player_selection_bar">
                 </div>
