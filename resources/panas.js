@@ -6,24 +6,14 @@
     5: Extremely
 */
 src_panasScale = [
-    "Interested",
-    "Disinterested",
+    "Happy",
+    "Sad",
+    "Angry",
+    "Hurt",
+    "Included",
     "Excited",
-    "Upset",
-    "Strong",
-    "Guilty",
-    "Scared",
-    "Hostile",
-    "Enthusiastic",
-    "Proud",
-    "Irritable",
-    "Alert",
-    "Ashamed",
-    "Inspired",
-    "Nervous",
-    "Determined",
-    "Attentive",
-    "Jittery",
-    "Active",
-    "Afraid"
+    "Liked by others",
+    "Interested",
+    "Enjoyment",
+    "Confident"
 ]
