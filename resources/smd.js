@@ -29,6 +29,6 @@ src_smdScale = [
     "regularly had no interest in hobbies or other activities because you would rather use social media?",
     "regularly neglected other activities (e.g. hobbies, sport) because you wanted to use social media?",
     "had serious problems at school or at work because you were spending too much time on social media?",
-    "had serious conflict with your parent(s) and sibling(s) because of your social media use?",
+    "had serious conflict with your close relatives because of your social media use?",
     "jeopardised or lost an important friendship or relationship because you were spending too much time on social media?"
 ]

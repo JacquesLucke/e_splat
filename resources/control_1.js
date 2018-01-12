@@ -26,12 +26,12 @@ src_controlQuestions1 = [
   },
   {
     "answers": [
-      "0-49",
-      "50-99",
-      "100-149",
-      "150-199",
-      "200-249",
-      "250+"
+      "0-149",
+      "150-299",
+      "300-449",
+      "450-599",
+      "600-749",
+      "750+"
     ],
     "multiple": false,
     "question": "My current number of friends on Facebook is... (If you don't have Facebook, please substitute twitter)"
