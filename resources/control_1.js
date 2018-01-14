@@ -2,14 +2,8 @@ src_controlQuestions1 = [
   {
     "answers": [
       "United Kingdom",
-      "France",
       "Germany",
-      "New Zealand",
-      "Norway",
-      "Singapore",
-      "South Africa",
-      "Uganda",
-      "United States of America"
+      "Other"
     ],
     "multiple": false,
     "question": "Please select your nationality"
